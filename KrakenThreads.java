@@ -1,8 +1,8 @@
 public class KrakenThreads{
 
-	final static int ARRAY_SIZE = 1000;
-	final static long COUNT_TO = 1000000;
-	final static long COUNT_EACH = (int)(COUNT_TO/ARRAY_SIZE);
+	final static int ARRAY_SIZE = 100;
+	final static long COUNT_EACH = 1000000;
+	public static int result = 0;
 
 	public static void main(String[]args){
 		FunThread[] threads = new FunThread[ARRAY_SIZE];
@@ -10,6 +10,7 @@ public class KrakenThreads{
 			threads[i] = new FunThread(i+1, COUNT_EACH);
 			threads[i].start();
 		}
+		System.out.println(result);
 	}
 
 	static class FunThread extends Thread{
@@ -27,6 +28,7 @@ public class KrakenThreads{
 			startTime = System.nanoTime();
 			while(count!=target)
 				count++;
+			result+=target;
 			System.out.println("Thread "+index+" took "+(System.nanoTime()-startTime)+" nanoseconds to count to "+target);
 		}
 	}
