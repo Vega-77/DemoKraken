@@ -5,6 +5,7 @@ public class KrakenThreads{
 	public static int result = 0;
 
 	public static void main(String[]args){
+
 		FunThread[] threads = new FunThread[ARRAY_SIZE];
 		for(int i=0; i<ARRAY_SIZE; i++){
 			threads[i] = new FunThread(i+1, COUNT_EACH);
